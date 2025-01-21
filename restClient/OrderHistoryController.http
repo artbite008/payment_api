@@ -1,0 +1,30 @@
+### OrderHistoryController SUCCESS
+GET http://{{host}}:{{port}}/v1/order/get/orderHistory?page=4&pageSize=10&fiat=USD&orderType=RECHARGE&lang=en_US
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+
+### OrderHistoryController
+GET http://{{host}}:{{port}}/v1/order/get/orderHistory?page=1&pageSize=10&fiat=USD&orderType=RECHARGE&lang=en_US
+X-USER-ID: 123456
+X-VERSION: dev-pci-checkout-2022-04-1
+
+
+###
+POST http://{{host}}:{{port}}/v1/querypayment_method
+Content-Type: application/json
+
+["BANK_CARD"]
+
+###
+GET http://{{host}}:{{port}}/pmtapi/v1/payin_orders?page=1&pageSize=10&fiat=CNY&orderType=BUY&lang=en_US
+X-USER-ID: 5db155d72c96ae092cfc5487
+
+
+###
+GET http://{{host}}:{{port}}/pmtapi/v1/payin_orders?page=3&pageSize=10&fiat=USD&orderType=BUY&lang=en_US
+X-USER-ID: 5f20d9618c360a0008de5781
+X-VERSION: history
+
+###
+GET http://{{host}}:{{port}}/pmtapi/v1/payin_orders?page=11&pageSize=10&fiat=USD&orderType=BUY&lang=en_US
+X-USER-ID: 5f20d9618c360a0008de5781
+X-VERSION: history

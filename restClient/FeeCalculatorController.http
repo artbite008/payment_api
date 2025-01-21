@@ -1,0 +1,24 @@
+### FeeCalculatorController SUCCESS
+POST http://{{host}}:{{port}}/pmtapi/v1/fee/calculate
+Content-Type: application/json
+X-VERSION: dev-pci-checkout-2022-04-1
+
+{
+  "paymentMethodCode": "SEPA_TRANSACTIVE",
+  "tradeType": "BUY",
+  "fiatCurrency": "USD",
+  "cardId": "",
+  "fiatAmount": "100"
+}
+
+### FeeCalculatorController ERROR
+POST http://{{host}}:{{port}}/pmtapi/v1/fee/calculate
+Content-Type: application/json
+
+{
+"paymentMethodCode": "SEPA_TRANSACTIVE1",
+"tradeType": "BUY",
+"fiatCurrency": "USD",
+"cardId": "",
+"fiatAmount": "100"
+}

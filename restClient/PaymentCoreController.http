@@ -1,0 +1,88 @@
+### 绑卡
+POST http://{{host}}:{{port}}/pmtapi/v1/card/attach
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "cardToken":"check_pci",
+  "cardType": "CREDIT",
+  "firstName":"BANK_CARD",
+  "lastName":100,
+  "expireMonth":"10",
+  "expireYear": "24",
+  "address1": "asdssd",
+  "postalCode": "202221",
+  "city": "chengdu",
+  "country": "china",
+  "channelType": "BANK_CARD",
+  "riskSessionId": "jtbnhm6294c59018fddf93e06b09d5",
+  "clientFrom": "IOS",
+  "ext": {
+    "app_version": "3.58.0"
+  }
+}
+
+
+### 下单
+POST http://{{host}}:{{port}}/pmtapi/v1/payin_order/create?recharge
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "channelName":"check_pci",
+  "channelType":"BANK_CARD",
+  "rechargeAmount":100,
+  "fiatCurrency":"USD",
+  "ext": {
+    "CHECKOUT_CARD_ID": "ins_2022041202103602100411330005",
+    "SESSION_ID": "jtbnhm6294c32518fddf93e06b09d3"
+  }
+}
+
+### 下单
+POST http://{{host}}:{{port}}/pmtapi/v1/payin_order/confirm?recharge
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-VERSION: dev-pci-checkout-2022-04-11
+
+{
+  "orderId": "2022041301365902000411630005",
+  "orderType": "RECHARGE"
+}
+
+
+###
+POST http://{{host}}:{{port}}/pmtapi/v1/payin_order/confirm?buy
+X-USER-ID: 5f5b118bcb33340008026fb3
+X-VERSION: history
+Content-Type: application/json
+
+{
+"orderId": "pir_deposit_623a962a316e391c1210d7c3"
+}
+
+###
+POST http://{{host}}:{{port}}/pmtapi/v1/payin_order/confirm?buy
+X-USER-ID: 5f20d9618c360a0008de5781
+X-VERSION: history
+Content-Type: application/json
+
+{
+  "orderId":"611b98786f36d7b7f404f468"
+}

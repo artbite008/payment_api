@@ -1,0 +1,40 @@
+### session 获取 充值
+GET http://{{host}}:{{port}}/pmtapi/v1/session_id/create?bizType=recharge
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-VERSION: risk
+
+
+### 风控校验
+POST http://{{host}}:{{port}}/pmtapi/v1/payin_order/risk/detect
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "channelName":"checkout_pci",
+  "channelType":"BANK_CARD",
+  "totalAmount":100,
+  "currency":"USD",
+  "sessionId": "jtbnhm62958f3118fddfaa8f609e59",
+  "cardId": "",
+  "bizType": "recharge",
+  "ext": {
+    "app_version": "3.58.9"
+  }
+}
+
+### session 获取 绑卡
+GET http://{{host}}:{{port}}/pmtapi/v1/session_id/create?bizType=card
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-VERSION: risk
+
+
+
+

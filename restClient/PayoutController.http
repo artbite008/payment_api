@@ -1,0 +1,90 @@
+### 绑定提现卡
+POST http://{{host}}:{{port}}/api/v1/user/create_payout_account
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "channel_id":"advcash",
+  "currency":"USD",
+  "account_name": "1O2PI9123",
+  "bank_name":"LET123123",
+  "bic":"LET123123",
+  "payee_email":"64664@qq.com",
+  "client_from": "WEB",
+  "extra": {
+    "app_version": "3.22.3"
+  }
+}
+
+### 删除提现卡
+POST http://{{host}}:{{port}}/api/v1/user/payout_account/poa_62202c98ec3cc62b289afaf5/delete
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "extra": {
+    "app_version": "3.22.3"
+  }
+}
+
+### 删除提现卡
+POST http://{{host}}:{{port}}/api/v1/user/payout_account/delete
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "payout_account_id": "poa_62202c98ec3cc62b289afaf5",
+  "client_from": "IOS",
+  "extra": {
+    "app_version": "3.22.3"
+  }
+}
+
+### 提现
+POST http://{{host}}:{{port}}/api/v2/create_payout_transaction
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "channel_id":"capitual",
+  "payment_name": "BANK_TRANSFER",
+  "currency":"USD",
+  "amount":200,
+  "payout_account_id": "poa_62202c98ec3cc62b289afaf5",
+  "source":"ios",
+  "extra": {
+    "app_version": "3.22.3"
+  }
+}

@@ -1,0 +1,109 @@
+spring:
+  ##事物
+  transaction:
+    default-timeout: 5
+  redis:
+    timeout: 50000ms
+    lettuce:
+      pool:
+        max-active: 16 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 8 # 连接池中的最大空闲连接
+        min-idle: 2 # 连接池中的最小空闲连接
+        max-wait: 50000ms
+    database: 0
+    host: middleware.siupay.com
+    port: 3087
+    password: payment1234....
+
+  security:
+    user:
+      name: admin
+      password: 123
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  kafka:
+    bootstrap-servers: middleware.siupay.com:3092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      type: sync
+      acks: all
+      retries: 3
+  main:
+    allow-bean-definition-overriding: true
+
+
+server:
+  port: 10000
+  tomcat:
+    max-threads: 800
+    min-spare-threads: 200
+    accesslog:
+      enabled: true
+      rotate: true
+      directory: ${logging.path}
+
+management:
+  security:
+    enabled: true
+  endpoints:
+    jmx:
+      exposure:
+        include: info, health, prometheus, eureka
+    web:
+      exposure:
+        include: info, health, prometheus, eureka
+  health:
+    defaults:
+      enabled: false
+
+
+feign:
+  httpclient:
+    enabled: false
+  hystrix:
+    enabled: false
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        read-timeout: 16500
+        connect-timeout: 15000
+hystrix:
+  threadpool:
+    default:
+      coreSize: 3
+      maximumSize: 6
+      maxQueueSize: 100
+      queueSizeRejectionThreshold: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+    currency:
+      coreSize: 3
+      maximumSize: 6
+      maxQueueSize: 100
+      queueSizeRejectionThreshold: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 7000
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 60000
+      circuitBreaker:
+        errorThresholdPercentage: 70
+        requestVolumeThreshold: 50
+        sleepWindowInMilliseconds: 60000
+
+pci:
+  authorization:
+    switch:
+      credentialValidate: OFF
+    rsa:
+      publicKey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCInYu66Ww7u0zvpoqoRqfk9J4Ai/rWFrzyI/ElhGrN7kSOWdpUjA9fdZllygmb77bidKJW4mP15MgFufWI+N+MMjekuHEm3ikQZWWIckVS4RDbInexraYpIwgXe1WnzgF8E8FlZpr7XqMHiXmqe6t7S6BY1fbw0NRhH6rAG5MpQIDAQAB
